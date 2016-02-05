@@ -1,13 +1,13 @@
 #seg=NS
-miseq=c1
+miseq=a1
 minion=flu-6-4-rebasecalled.pass
-ref=all-fludb-H1N1-H3N2-FluB.fasta
-subtype="H3N2"
+ref=all-H1N1-H3N2-FluB-full-segs.fasta
+subtype="H1N1"
 
 for seg in NS NA NP M PB1 PB2 PA HA
 do
 # sort the segments by their hits
-sort -nrk4 $minion.all-fludb.blast.seg-counts.tsv | grep -P $subtype'\t'$seg | head | cut -f1 > $minion-top-$subtype-$seg.tsv
+sort -nrk4 $minion.all-full-segs.blast.seg-counts.tsv | grep -P $subtype'\t'$seg | head | cut -f1 > $minion-top-$subtype-$seg.tsv
 
 # get the fasta sequences
 grep --no-group-separator -A1 -F -f $minion-top-$subtype-$seg.tsv $ref > $minion-top-$subtype-$seg.fasta
