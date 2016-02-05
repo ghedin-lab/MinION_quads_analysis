@@ -24,5 +24,10 @@ for i in $(samtools idxstats miseq-$minion-top-$subtype-$seg.bam | cut -f1 | gre
 /opt/bioinformatics-software/bwa-0.7.12/bwa mem -x ont2d -t 40 $minion-top-$subtype-$seg.fasta $minion.fastq | samtools view -bS - | samtools sort - $minion-top-$subtype-$seg && samtools index $minion-top-$subtype-$seg.bam
 
 # make minion consensus
+<<<<<<< HEAD
 for i in $(samtools idxstats miseq-flu-11-09-top-$subtype-$seg.bam | cut -f1 | grep -v '*'); do python ~/custom-scripts/bamfile_consensus_generate/bamfile_consensus_generate.py $minion-top-$subtype-$seg.bam $i; done > $minion-top-$subtype-$seg.consensus.fasta
 done
+=======
+for i in $(samtools idxstats $minion-top-$subtype-$seg.bam | cut -f1 | grep -v '*'); do python ~/custom-scripts/bamfile_consensus_generate/bamfile_consensus_generate.py $minion-top-$subtype-$seg.bam $i; done > $minion-top-$subtype-$seg.consensus.fasta
+done
+>>>>>>> d5cd6323df7ed79c06daafd9d8539f2709bff780
